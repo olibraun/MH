@@ -1,7 +1,8 @@
 //Sketch-Datei für Moorhuhn
 let img_background;
-let img_huhn_alive;
-let img_huhn_dead;
+let img_chicken_alive;
+let img_chicken_dead;
+let img_bullet;
 let snd_background;
 let snd_big_chicken_appears;
 let snd_big_chicken_shot;
@@ -15,8 +16,9 @@ let snd_gun_empty;
 function preload(){
   //Load images
   img_background = loadImage("material/meadow.jpg");
-  img_huhn_alive = loadImage("material/chicken1.png");
-  img_huhn_dead = loadImage("material/chickenDead.png");
+  img_chicken_alive = loadImage("material/chicken1.png");
+  img_chicken_dead = loadImage("material/chickenDead.png");
+  img_bullet = loadImage("material/bullet.png");
 
   //Load sounds
   snd_background = loadSound("material/sfx_background_birds_STEREO_LOOP.wav");
@@ -32,6 +34,7 @@ function preload(){
 
 function setup() {
   createCanvas(1200,700);
+  masterVolume(0);
 }
 
 function draw() {
@@ -40,6 +43,18 @@ function draw() {
   if(!snd_background.isPlaying()){
     snd_background.play();
   }
+  image(img_chicken_alive,400,75,0.4*img_chicken_alive.width,0.4*img_chicken_alive.height);
+  image(img_chicken_alive,100,100,0.8*img_chicken_alive.width,0.8*img_chicken_alive.height);
+  image(img_chicken_alive,600,100,1.5*img_chicken_alive.width,1.5*img_chicken_alive.height);
+  image(img_bullet,0,550,105,122.5);
+  image(img_bullet,30,550,105,122.5);
+  image(img_bullet,60,550,105,122.5);
+  image(img_bullet,90,550,105,122.5);
+  image(img_bullet,120,550,105,122.5);
+  image(img_bullet,150,550,105,122.5);
+  image(img_bullet,180,550,105,122.5);
+  image(img_bullet,210,550,105,122.5);
+  image(img_bullet,240,550,105,122.5);
 }
 
 function mousePressed(){
