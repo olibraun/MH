@@ -3,10 +3,6 @@ class Chicken{
     //...
   }
 
-  constructor(x,y){
-    //...
-  }
-
   show(){
     //...
   }
