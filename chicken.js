@@ -30,28 +30,33 @@ class Chicken{
     return x >= this.pos.x && x <= this.pos.x + this.imageScale*img_chicken_alive.width && y >= this.pos.y && y <= this.pos.y + this.imageScale*img_chicken_alive.height;
   }
 
+  offScreen(){
+    return this.pos.x > width || this.pos.x < 0 || this.pos.y > height;
+  }
+
   update(){
     this.pos.add(this.vel);
     switch(this.kind){
       case "FRONT":
-        this.vel.x = this.velXScale;
-        this.vel.y = sin(this.velYScale*this.pos.x);
+        this.vel.x = this.alive ? this.velXScale : 0;
+        this.vel.y = this.alive ? sin(this.velYScale*this.pos.x) : 5;
         break;
 
       case "MIDDLE":
-        this.vel.x = this.velXScale;
-        this.vel.y = sin(this.velYScale*this.pos.x);
+        this.vel.x = this.alive ? this.velXScale : 0;
+        this.vel.y = this.alive ? sin(this.velYScale*this.pos.x) : 5;
         break;
 
       case "BACK":
-        this.vel.x = this.velXScale;
-        this.vel.y = sin(this.velYScale*this.pos.x);
+        this.vel.x = this.alive ? this.velXScale : 0;
+        this.vel.y = this.alive ? sin(this.velYScale*this.pos.x) : 5;
         break;
     }
   }
 
   show(){
-    image(img_chicken_alive,this.pos.x,this.pos.y,this.imageScale*img_chicken_alive.width,this.imageScale*img_chicken_alive.height);
+    let im = this.alive ? img_chicken_alive : img_chicken_dead;
+    image(im,this.pos.x,this.pos.y,this.imageScale*img_chicken_alive.width,this.imageScale*img_chicken_alive.height);
     if(debug){
       stroke(255);
       strokeWeight(4);
