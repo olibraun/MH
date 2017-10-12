@@ -51,7 +51,7 @@ function draw() {
     snd_background.play();
   }
 
-  if(random(1) < 0.01){
+  if(random(1) < 0.005){
     chickens.push(new Chicken(random(["FRONT","MIDDLE","BACK"])));
   }
 
@@ -75,9 +75,17 @@ function draw() {
 }
 
 function mousePressed(){
+  snd_gun_fire.play();
   for(let i=chickens.length-1; i >= 0; i--){
     if(chickens[i].hits(mouseX,mouseY)){
       chickens[i].alive = false;
     }
+  }
+}
+
+function keyPressed(){
+  if(keyCode == '32'){
+    //Spacebar
+    snd_gun_reload.play();
   }
 }
