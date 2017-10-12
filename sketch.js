@@ -18,9 +18,7 @@ let snd_gun_fire;
 let snd_gun_empty;
 
 // Objekte
-let chick1;
-let chick2;
-let chick3;
+let chickens = [];
 
 function preload(){
   //Load images
@@ -44,9 +42,6 @@ function preload(){
 function setup() {
   createCanvas(1200,700);
   masterVolume(0);
-  chick1 = new Chicken("FRONT");
-  chick2 = new Chicken("MIDDLE");
-  chick3 = new Chicken("BACK");
 }
 
 function draw() {
@@ -56,15 +51,20 @@ function draw() {
     snd_background.play();
   }
 
+  if(random(1) < 0.01){
+    chickens.push(new Chicken(random(["FRONT","MIDDLE","BACK"])));
+  }
+
   // image(img_chicken_alive,100,100,0.8*img_chicken_alive.width,0.8*img_chicken_alive.height);
   // image(img_chicken_alive,600,100,1.4*img_chicken_alive.width,1.4*img_chicken_alive.height);
 
-  chick1.update();
-  chick2.update();
-  chick3.update();
-  chick1.show();
-  chick2.show();
-  chick3.show();
+  for(let i=chickens.length-1; i >= 0; i--){
+    chickens[i].update();
+    chickens[i].show();
+    if(chickens[i].offScreen()){
+      chickens.splice(i,1);
+    }
+  }
 
   image(img_bullet,0,550,105,122.5);
   image(img_bullet,30,550,105,122.5);
@@ -78,13 +78,9 @@ function draw() {
 }
 
 function mousePressed(){
-  if(chick1.hits(mouseX,mouseY)){
-    console.log("HIT");
-  }
-  if(chick2.hits(mouseX,mouseY)){
-    console.log("HIT");
-  }
-  if(chick3.hits(mouseX,mouseY)){
-    console.log("HIT");
+  for(let i=chickens.length-1; i >= 0; i--){
+    if(chickens[i].hits(mouseX,mouseY)){
+      chickens[i].alive = false;
+    }
   }
 }
