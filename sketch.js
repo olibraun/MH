@@ -1,5 +1,7 @@
 //Sketch-Datei für Moorhuhn
 
+let debug = false;
+
 // Datenmaterial
 let img_background;
 let img_chicken_alive;
@@ -76,5 +78,13 @@ function draw() {
 }
 
 function mousePressed(){
-  //
+  if(chick1.hits(mouseX,mouseY)){
+    console.log("HIT");
+  }
+  if(chick2.hits(mouseX,mouseY)){
+    console.log("HIT");
+  }
+  if(chick3.hits(mouseX,mouseY)){
+    console.log("HIT");
+  }
 }

@@ -1,6 +1,6 @@
 class Chicken{
   constructor(kind){
-    this.pos = createVector(0,random(height/3));
+    this.pos = createVector(0,random(5*height/12));
     this.vel = createVector();
     this.alive = true;
     this.kind = kind;
@@ -26,6 +26,10 @@ class Chicken{
     }
   }
 
+  hits(x,y){
+    return x >= this.pos.x && x <= this.pos.x + this.imageScale*img_chicken_alive.width && y >= this.pos.y && y <= this.pos.y + this.imageScale*img_chicken_alive.height;
+  }
+
   update(){
     this.pos.add(this.vel);
     switch(this.kind){
@@ -48,5 +52,11 @@ class Chicken{
 
   show(){
     image(img_chicken_alive,this.pos.x,this.pos.y,this.imageScale*img_chicken_alive.width,this.imageScale*img_chicken_alive.height);
+    if(debug){
+      stroke(255);
+      strokeWeight(4);
+      noFill();
+      rect(this.pos.x,this.pos.y,this.imageScale*img_chicken_alive.width,this.imageScale*img_chicken_alive.height);
+    }
   }
 }
