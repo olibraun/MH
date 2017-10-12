@@ -1,4 +1,6 @@
 //Sketch-Datei für Moorhuhn
+
+// Datenmaterial
 let img_background;
 let img_chicken_alive;
 let img_chicken_dead;
@@ -12,6 +14,11 @@ let snd_chicken_hit_mid;
 let snd_gun_reload;
 let snd_gun_fire;
 let snd_gun_empty;
+
+// Objekte
+let chick1;
+let chick2;
+let chick3;
 
 function preload(){
   //Load images
@@ -35,6 +42,9 @@ function preload(){
 function setup() {
   createCanvas(1200,700);
   masterVolume(0);
+  chick1 = new Chicken("FRONT");
+  chick2 = new Chicken("MIDDLE");
+  chick3 = new Chicken("BACK");
 }
 
 function draw() {
@@ -43,9 +53,17 @@ function draw() {
   if(!snd_background.isPlaying()){
     snd_background.play();
   }
-  image(img_chicken_alive,400,75,0.4*img_chicken_alive.width,0.4*img_chicken_alive.height);
-  image(img_chicken_alive,100,100,0.8*img_chicken_alive.width,0.8*img_chicken_alive.height);
-  image(img_chicken_alive,600,100,1.5*img_chicken_alive.width,1.5*img_chicken_alive.height);
+
+  // image(img_chicken_alive,100,100,0.8*img_chicken_alive.width,0.8*img_chicken_alive.height);
+  // image(img_chicken_alive,600,100,1.4*img_chicken_alive.width,1.4*img_chicken_alive.height);
+
+  chick1.update();
+  chick2.update();
+  chick3.update();
+  chick1.show();
+  chick2.show();
+  chick3.show();
+
   image(img_bullet,0,550,105,122.5);
   image(img_bullet,30,550,105,122.5);
   image(img_bullet,60,550,105,122.5);
