@@ -55,9 +55,6 @@ function draw() {
     chickens.push(new Chicken(random(["FRONT","MIDDLE","BACK"])));
   }
 
-  // image(img_chicken_alive,100,100,0.8*img_chicken_alive.width,0.8*img_chicken_alive.height);
-  // image(img_chicken_alive,600,100,1.4*img_chicken_alive.width,1.4*img_chicken_alive.height);
-
   for(let i=chickens.length-1; i >= 0; i--){
     chickens[i].update();
     chickens[i].show();
