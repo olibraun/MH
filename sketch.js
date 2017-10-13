@@ -6,6 +6,8 @@ let debug = false;
 let img_background;
 let img_chicken_alive;
 let img_chicken_dead;
+let img_chicken_alive_2;
+let img_chicken_dead_2;
 let img_bullet;
 let snd_background;
 let snd_big_chicken_appears;
@@ -24,7 +26,9 @@ function preload(){
   //Load images
   img_background = loadImage("material/meadow.jpg");
   img_chicken_alive = loadImage("material/chicken1.png");
+  img_chicken_alive_2 = loadImage("material/chicken2.png");
   img_chicken_dead = loadImage("material/chickenDead.png");
+  img_chicken_dead_2 = loadImage("material/chickenDead2.png");
   img_bullet = loadImage("material/bullet.png");
 
   //Load sounds
@@ -52,7 +56,7 @@ function draw() {
   }
 
   if(random(1) < 0.005){
-    chickens.push(new Chicken(random(["FRONT","MIDDLE","BACK"])));
+    chickens.push(new Chicken( random(["FRONT","MIDDLE","BACK"]) , random(["RIGHT_TO_LEFT","LEFT_TO_RIGHT"]) ) );
   }
 
   for(let i=chickens.length-1; i >= 0; i--){

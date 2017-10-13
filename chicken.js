@@ -1,9 +1,10 @@
 class Chicken{
-  constructor(kind){
+  constructor(kind,direction){
     this.pos = createVector(0,random(5*height/12));
     this.vel = createVector();
     this.alive = true;
     this.kind = kind;
+    this.direction = direction;
 
     switch(kind){
       case "FRONT":
@@ -23,6 +24,11 @@ class Chicken{
         this.velXScale = .7;
         this.velYScale = .05;
         break;
+    }
+
+    if(this.direction == "RIGHT_TO_LEFT"){
+      this.velXScale *= -1;
+      this.pos.x = width;
     }
   }
 
@@ -55,7 +61,12 @@ class Chicken{
   }
 
   show(){
-    let im = this.alive ? img_chicken_alive : img_chicken_dead;
+    let im;
+    if(this.direction == "RIGHT_TO_LEFT"){
+      im = this.alive ? img_chicken_alive_2 : img_chicken_dead_2;
+    }else{
+      im = this.alive ? img_chicken_alive : img_chicken_dead;
+    }
     image(im,this.pos.x,this.pos.y,this.imageScale*img_chicken_alive.width,this.imageScale*img_chicken_alive.height);
     if(debug){
       stroke(255);
