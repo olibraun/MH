@@ -83,6 +83,7 @@ function mousePressed(){
   for(let i=chickens.length-1; i >= 0; i--){
     if(chickens[i].hits(mouseX,mouseY)){
       chickens[i].alive = false;
+      break;
     }
   }
 }
