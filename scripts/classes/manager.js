@@ -34,7 +34,7 @@ class gameManager{
     }
     if(this.screenState === "PLAYING"){
       //Generate new chickens
-      if(random(1) < 0.005){
+      if(random(1) < 0.009){
         let temp_kind = random(["FRONT","MIDDLE","BACK"]);
         let temp_chicken = new Chicken( temp_kind , random(["RIGHT_TO_LEFT","LEFT_TO_RIGHT"]) );
         switch(temp_kind){

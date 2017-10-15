@@ -16,6 +16,12 @@ class titleScreen{
     textSize(35);
     textStyle(NORMAL);
     textFont(silly_font);
-    text("MOORHUHN TITLE SCREEN\nMoorhuhn",width/2,height/2);
+    let msg;
+    msg = "Moorhuhn-Klon";
+    msg += "\n\n";
+    msg += "Klicke, um zu spielen!"
+    msg += "\n\n";
+    msg += "Warte, um ein tolles Lied zu komplett hoeren!"
+    text(msg,width/2,height/2);
   }
 }

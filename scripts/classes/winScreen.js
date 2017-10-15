@@ -4,6 +4,7 @@ class winScreen{
   }
 
   show(){
+    snd_background.stop();
     if(!snd_song.isPlaying()){
       snd_song.play();
     }
@@ -16,6 +17,8 @@ class winScreen{
     textSize(35);
     textStyle(NORMAL);
     textFont(silly_font);
-    text("Herzlichen Glueckwunsch!\nDu hast " + str(this.points) + " Punkte!",width/2,height/2);
+    let msg = "Herzlichen Glueckwunsch!\nDu hast " + str(this.points) + " Punkte!";
+    msg += "\n\nKlicke, um erneut zu spielen!"
+    text(msg,width/2,height/2);
   }
 }
