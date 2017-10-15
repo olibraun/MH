@@ -1,6 +1,5 @@
 //Sketch-Datei für Moorhuhn
 let debug = false;
-let manager;
 
 // Datenmaterial
 let img_background;
@@ -23,7 +22,7 @@ let snd_gun_fire;
 let snd_gun_empty;
 
 // Objekte
-let chickens = [];
+let manager;
 
 function preload(){
   loadImages();
