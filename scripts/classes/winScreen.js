@@ -16,6 +16,6 @@ class winScreen{
     textSize(35);
     textStyle(NORMAL);
     textFont(silly_font);
-    text("Herzlichen Glückwunsch!\nDu hast " + str(this.points) + " Punkte!",width/2,height/2);
+    text("Herzlichen Glueckwunsch!\nDu hast " + str(this.points) + " Punkte!",width/2,height/2);
   }
 }
