@@ -15,6 +15,7 @@ class gameManager{
   }
 
   start(){
+    this.screenState="PLAYING";
     this.gameTime = 90;
     setInterval(this.updateTimer.bind(this),1000);
   }
@@ -75,7 +76,7 @@ class gameManager{
   mouseAction(x,y){
     switch(this.screenState){
       case "TITLE":
-        this.screenState="PLAYING";
+        this.start();
         break;
 
       case "PLAYING":
