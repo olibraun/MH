@@ -1,0 +1,19 @@
+Manager:
+- Score
+--- Berechnung 5/10/25
+--- Anzeige im Screen aktueller Stand
+--- Anzeige bei Treffer
+- Timer
+
+Fadenkreuz
+- Zeichnen
+- Cursor ausblenden bei state PLAYING
+
+WinScreen mti Punktezahl
+
+Verbesserungen:
+- Bessere Hitdetection für Hühner
+
+Design:
+- Title screen
+- Win Screen
