@@ -45,7 +45,7 @@ function draw() {
 }
 
 function mousePressed(){
-  manager.mouseAction();
+  manager.mouseAction(mouseX,mouseY);
 }
 
 function keyPressed(){

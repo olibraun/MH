@@ -10,6 +10,7 @@ class gameManager{
     this.backLayer = [];
     this.middleLayer = [];
     this.frontLayer = [];
+    this.scoreDisplays = [];
   }
 
   update(){
@@ -52,10 +53,16 @@ class gameManager{
           this.frontLayer.splice(i,1);
         }
       }
+      //If appropriate, remove score displays
+      for(let i=this.scoreDisplays.length-1; i >= 0; i--){
+        if(this.scoreDisplays[i].timer < 0){
+          this.scoreDisplays.splice(i,1);
+        }
+      }
     }
   }
 
-  mouseAction(){
+  mouseAction(x,y){
     switch(this.screenState){
       case "TITLE":
         this.screenState="PLAYING";
@@ -72,6 +79,7 @@ class gameManager{
               this.frontLayer[i].alive = false;
               snd_chicken_hit_close.play();
               chicken_killed = true;
+              this.scoreDisplays.push(new scoreDisplay("5",x,y) );
               this.score += 5;
               break;
             }
@@ -81,6 +89,7 @@ class gameManager{
               this.middleLayer[i].alive = false;
               snd_chicken_hit_mid.play();
               chicken_killed = true;
+              this.scoreDisplays.push(new scoreDisplay("10",x,y) );
               this.score += 10;
               break;
             }
@@ -90,6 +99,7 @@ class gameManager{
               this.backLayer[i].alive = false;
               snd_chicken_hit_far.play();
               chicken_killed = true;
+              this.scoreDisplays.push(new scoreDisplay("25",x,y) );
               this.score += 25;
               break;
             }
@@ -127,8 +137,18 @@ class gameManager{
         for(let i=this.frontLayer.length-1; i >= 0; i--){
           this.frontLayer[i].show();
         }
+        for(let i=this.scoreDisplays.length-1; i >= 0; i--){
+          this.scoreDisplays[i].updateAndShow();
+        }
 
         this.gun.show();
+
+        textFont(silly_font);
+        fill(255);
+        stroke(0);
+        strokeWeight(4);
+        textAlign(RIGHT,TOP);
+        text(str(this.score),width,0);
         break;
     }
   }
