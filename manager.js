@@ -70,18 +70,21 @@ class gameManager{
           for(let i=this.frontLayer.length-1; i >= 0; i--){
             if(this.frontLayer[i].hits(mouseX,mouseY) && !chicken_killed){
               this.frontLayer[i].alive = false;
+              chicken_killed = true;
               break;
             }
           }
           for(let i=this.middleLayer.length-1; i >= 0; i--){
             if(this.middleLayer[i].hits(mouseX,mouseY) && !chicken_killed){
               this.middleLayer[i].alive = false;
+              chicken_killed = true;
               break;
             }
           }
           for(let i=this.backLayer.length-1; i >= 0; i--){
             if(this.backLayer[i].hits(mouseX,mouseY) && !chicken_killed){
               this.backLayer[i].alive = false;
+              chicken_killed = true;
               break;
             }
           }
