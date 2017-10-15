@@ -1,8 +1,11 @@
 class gameManager{
   constructor(){
     this.screenState = "TITLE";
+
     this.score = 0;
+
     this.title = new titleScreen();
+    this.gun = new Gun();
   }
 
   update(){
@@ -29,13 +32,22 @@ class gameManager{
         break;
 
       case "PLAYING":
-        snd_gun_fire.play();
-        for(let i=chickens.length-1; i >= 0; i--){
-          if(chickens[i].hits(mouseX,mouseY)){
-            chickens[i].alive = false;
+        let gun_result = this.gun.fire();
+        if(gun_result){
+          for(let i=chickens.length-1; i >= 0; i--){
+            if(chickens[i].hits(mouseX,mouseY)){
+              chickens[i].alive = false;
+            }
           }
         }
         break;
+    }
+  }
+
+  keyboardAction(keycode){
+    if(keycode == '32'){
+      //Spacebar
+      this.gun.reload();
     }
   }
 
@@ -54,6 +66,8 @@ class gameManager{
         for(let i=chickens.length-1; i >= 0; i--){
           chickens[i].show();
         }
+
+        this.gun.show();
         break;
     }
   }

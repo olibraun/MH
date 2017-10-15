@@ -39,16 +39,6 @@ function setup() {
 function draw() {
   manager.update();
   manager.show();
-
-  // image(img_bullet,0,550,105,122.5);
-  // image(img_bullet,30,550,105,122.5);
-  // image(img_bullet,60,550,105,122.5);
-  // image(img_bullet,90,550,105,122.5);
-  // image(img_bullet,120,550,105,122.5);
-  // image(img_bullet,150,550,105,122.5);
-  // image(img_bullet,180,550,105,122.5);
-  // image(img_bullet,210,550,105,122.5);
-  // image(img_bullet,240,550,105,122.5);
 }
 
 function mousePressed(){
@@ -56,8 +46,6 @@ function mousePressed(){
 }
 
 function keyPressed(){
-  if(keyCode == '32'){
-    //Spacebar
-    snd_gun_reload.play();
-  }
+  console.log(keyCode);
+  manager.keyboardAction(keyCode);
 }
