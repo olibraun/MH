@@ -21,6 +21,8 @@ let snd_gun_reload;
 let snd_gun_fire;
 let snd_gun_empty;
 
+let silly_font;
+
 // Objekte
 let manager;
 
@@ -28,6 +30,7 @@ function preload(){
   loadImages();
   loadSounds();
   adjustSounds();
+  silly_font = loadFont("material/JandaSillyMonkey.ttf");
 }
 
 function setup() {

@@ -12,6 +12,7 @@ class titleScreen{
     textAlign(CENTER,CENTER);
     textSize(35);
     textStyle(NORMAL);
+    textFont(silly_font);
     text("MOORHUHN TITLE SCREEN",width/2,height/2);
   }
 }

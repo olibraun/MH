@@ -1,6 +1,5 @@
 Manager:
 - Score
---- Berechnung 5/10/25
 --- Anzeige im Screen aktueller Stand
 --- Anzeige bei Treffer
 - Timer
@@ -10,7 +9,7 @@ Fadenkreuz
 - Cursor ausblenden bei state PLAYING
 
 Riesenhuhn
-- 50 Punkte
+- 30 Punkte
 
 WinScreen mit Punktzahl
 
