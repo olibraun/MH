@@ -1,6 +1,3 @@
-End state
--WinScreen mit Punktzahl
-
 Fadenkreuz
 - Zeichnen
 - Cursor ausblenden bei state PLAYING
@@ -14,3 +11,7 @@ Verbesserungen:
 Design:
 - Title screen
 - Win Screen
+
+(Mute-Button?)
+
+Scrollen?

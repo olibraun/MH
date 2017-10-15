@@ -8,6 +8,7 @@ let img_chicken_dead;
 let img_chicken_alive_2;
 let img_chicken_dead_2;
 let img_chicken_huge;
+let img_chicken_thumbs_up;
 let img_bullet;
 
 let snd_background;

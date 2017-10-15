@@ -3,9 +3,10 @@ class gameManager{
     this.screenState = "TITLE";
 
     this.score = 0;
-    this.gameTime = 0;
+    this.gameTime = 999999;
 
     this.title = new titleScreen();
+    this.winScreen = null;
     this.gun = new Gun();
 
     this.backLayer = [];
@@ -16,15 +17,24 @@ class gameManager{
 
   start(){
     snd_song.stop();
+    this.backLayer = [];
+    this.middleLayer = [];
+    this.frontLayer = [];
+    this.scoreDisplays = [];
+    this.gun.reload();
     this.screenState="PLAYING";
     this.gameTime = 90;
     setInterval(this.updateTimer.bind(this),1000);
   }
 
   update(){
+    if(this.gameTime <= 0){
+      this.screenState = "WIN";
+      this.winScreen = new winScreen(this.score);
+    }
     if(this.screenState === "PLAYING"){
       //Generate new chickens
-      if(random(1) < 0.005){
+      if(random(1) < 0.009){
         let temp_kind = random(["FRONT","MIDDLE","BACK"]);
         let temp_chicken = new Chicken( temp_kind , random(["RIGHT_TO_LEFT","LEFT_TO_RIGHT"]) );
         switch(temp_kind){
@@ -87,7 +97,7 @@ class gameManager{
           let chicken_killed = false;
           //Kill the front chickens first
           for(let i=this.frontLayer.length-1; i >= 0; i--){
-            if(this.frontLayer[i].hits(mouseX,mouseY) && !chicken_killed){
+            if(this.frontLayer[i].hits(mouseX,mouseY) && !chicken_killed && this.frontLayer[i].alive){
               this.frontLayer[i].alive = false;
               snd_chicken_hit_close.play();
               chicken_killed = true;
@@ -97,7 +107,7 @@ class gameManager{
             }
           }
           for(let i=this.middleLayer.length-1; i >= 0; i--){
-            if(this.middleLayer[i].hits(mouseX,mouseY) && !chicken_killed){
+            if(this.middleLayer[i].hits(mouseX,mouseY) && !chicken_killed && this.middleLayer[i].alive){
               this.middleLayer[i].alive = false;
               snd_chicken_hit_mid.play();
               chicken_killed = true;
@@ -107,7 +117,7 @@ class gameManager{
             }
           }
           for(let i=this.backLayer.length-1; i >= 0; i--){
-            if(this.backLayer[i].hits(mouseX,mouseY) && !chicken_killed){
+            if(this.backLayer[i].hits(mouseX,mouseY) && !chicken_killed && this.backLayer[i].alive){
               this.backLayer[i].alive = false;
               snd_chicken_hit_far.play();
               chicken_killed = true;
@@ -117,6 +127,10 @@ class gameManager{
             }
           }
         }
+        break;
+
+      case "WIN":
+        this.start();
         break;
     }
   }
@@ -164,6 +178,10 @@ class gameManager{
 
         textAlign(LEFT,TOP);
         text(convertSeconds(this.gameTime),0,0);
+        break;
+
+      case "WIN":
+        this.winScreen.show();
         break;
     }
   }

@@ -6,6 +6,7 @@ function loadImages(){
   img_chicken_dead = loadImage("material/chickenDead.png");
   img_chicken_dead_2 = loadImage("material/chickenDead2.png");
   img_chicken_huge = loadImage("material/chicken_large.png");
+  img_chicken_thumbs_up = loadImage("material/chicken_thumbs.png");
   img_bullet = loadImage("material/bullet.png");
 }
 
