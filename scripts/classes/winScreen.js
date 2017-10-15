@@ -1,21 +1,21 @@
 class winScreen{
-  constructor(){
+  constructor(points){
+    this.points = points;
   }
 
   show(){
     if(!snd_song.isPlaying()){
       snd_song.play();
     }
-    background(51);
-    let bbb = img_chicken_huge;
-    image(bbb,0,height-bbb.height);
+    background(255);
+    let bbb = img_chicken_thumbs_up;
     image(bbb,width-bbb.width,height-bbb.height);
-    fill(0, 255, 0);
+    fill(0);
     noStroke();
     textAlign(CENTER,CENTER);
     textSize(35);
     textStyle(NORMAL);
     textFont(silly_font);
-    text("MOORHUHN TITLE SCREEN\nMoorhuhn",width/2,height/2);
+    text("Herzlichen Glückwunsch!\nDu hast " + str(this.points) + " Punkte!",width/2,height/2);
   }
 }
