@@ -1,6 +1,7 @@
 //Sketch-Datei für Moorhuhn
 
 let debug = false;
+let manager = new gameManager();
 
 // Datenmaterial
 let img_background;
