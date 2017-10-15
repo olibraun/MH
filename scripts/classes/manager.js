@@ -21,6 +21,7 @@ class gameManager{
     this.middleLayer = [];
     this.frontLayer = [];
     this.scoreDisplays = [];
+    this.gun.reload();
     this.screenState="PLAYING";
     this.gameTime = 90;
     setInterval(this.updateTimer.bind(this),1000);
