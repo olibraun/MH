@@ -3,13 +3,17 @@ class scoreDisplay{
     this.str = string;
     this.x = x;
     this.y = y;
-    this.timer = 60;
+    this.timer = 50;
+    this.alpha = 255;
+    this.alphaSubtract = this.alpha / this.timer;
   }
 
   updateAndShow(){
     this.timer--;
-    fill(255);
-    stroke(0);
+    this.y--;
+    this.alpha-=this.alphaSubtract;
+    fill(255,this.alpha);
+    stroke(0,this.alpha);
     strokeWeight(4);
     textAlign(CENTER,CENTER);
     textFont(silly_font);

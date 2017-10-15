@@ -3,6 +3,7 @@ class gameManager{
     this.screenState = "TITLE";
 
     this.score = 0;
+    this.gameTime = 0;
 
     this.title = new titleScreen();
     this.gun = new Gun();
@@ -11,6 +12,11 @@ class gameManager{
     this.middleLayer = [];
     this.frontLayer = [];
     this.scoreDisplays = [];
+  }
+
+  start(){
+    this.gameTime = 90;
+    setInterval(this.updateTimer.bind(this),1000);
   }
 
   update(){
@@ -60,6 +66,10 @@ class gameManager{
         }
       }
     }
+  }
+
+  updateTimer(){
+    this.gameTime -= 1;
   }
 
   mouseAction(x,y){
@@ -149,6 +159,9 @@ class gameManager{
         strokeWeight(4);
         textAlign(RIGHT,TOP);
         text(str(this.score),width,0);
+
+        textAlign(LEFT,TOP);
+        text(convertSeconds(this.gameTime),0,0);
         break;
     }
   }
