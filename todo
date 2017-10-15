@@ -1,0 +1,20 @@
+Manager:
+- Score
+--- Anzeige bei Treffer
+- Timer
+
+Fadenkreuz
+- Zeichnen
+- Cursor ausblenden bei state PLAYING
+
+Riesenhuhn
+- 30 Punkte
+
+WinScreen mit Punktzahl
+
+Verbesserungen:
+- Bessere Hitdetection für Hühner
+
+Design:
+- Title screen
+- Win Screen
