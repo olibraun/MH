@@ -37,42 +37,22 @@ function setup() {
 }
 
 function draw() {
-  background(51);
-  image(img_background,0,0,1200,700);
-  if(!snd_background.isPlaying()){
-    snd_background.play();
-  }
+  manager.update();
+  manager.show();
 
-  if(random(1) < 0.005){
-    chickens.push(new Chicken( random(["FRONT","MIDDLE","BACK"]) , random(["RIGHT_TO_LEFT","LEFT_TO_RIGHT"]) ) );
-  }
-
-  for(let i=chickens.length-1; i >= 0; i--){
-    chickens[i].update();
-    chickens[i].show();
-    if(chickens[i].offScreen()){
-      chickens.splice(i,1);
-    }
-  }
-
-  image(img_bullet,0,550,105,122.5);
-  image(img_bullet,30,550,105,122.5);
-  image(img_bullet,60,550,105,122.5);
-  image(img_bullet,90,550,105,122.5);
-  image(img_bullet,120,550,105,122.5);
-  image(img_bullet,150,550,105,122.5);
-  image(img_bullet,180,550,105,122.5);
-  image(img_bullet,210,550,105,122.5);
-  image(img_bullet,240,550,105,122.5);
+  // image(img_bullet,0,550,105,122.5);
+  // image(img_bullet,30,550,105,122.5);
+  // image(img_bullet,60,550,105,122.5);
+  // image(img_bullet,90,550,105,122.5);
+  // image(img_bullet,120,550,105,122.5);
+  // image(img_bullet,150,550,105,122.5);
+  // image(img_bullet,180,550,105,122.5);
+  // image(img_bullet,210,550,105,122.5);
+  // image(img_bullet,240,550,105,122.5);
 }
 
 function mousePressed(){
-  snd_gun_fire.play();
-  for(let i=chickens.length-1; i >= 0; i--){
-    if(chickens[i].hits(mouseX,mouseY)){
-      chickens[i].alive = false;
-    }
-  }
+  manager.mouseAction();
 }
 
 function keyPressed(){
