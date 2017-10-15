@@ -27,6 +27,7 @@ let manager;
 function preload(){
   loadImages();
   loadSounds();
+  adjustSounds();
 }
 
 function setup() {
@@ -45,6 +46,5 @@ function mousePressed(){
 }
 
 function keyPressed(){
-  console.log(keyCode);
   manager.keyboardAction(keyCode);
 }

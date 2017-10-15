@@ -22,3 +22,9 @@ function loadSounds(){
   snd_gun_fire = loadSound("material/sfx_shotgun_blast.wav");
   snd_gun_empty = loadSound("material/sfx_typename_click.wav");
 }
+
+function adjustSounds(){
+    snd_gun_fire.setVolume(.5);
+    snd_gun_reload.setVolume(.5);
+    snd_gun_empty.setVolume(.5);
+}

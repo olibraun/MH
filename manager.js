@@ -70,21 +70,27 @@ class gameManager{
           for(let i=this.frontLayer.length-1; i >= 0; i--){
             if(this.frontLayer[i].hits(mouseX,mouseY) && !chicken_killed){
               this.frontLayer[i].alive = false;
+              snd_chicken_hit_close.play();
               chicken_killed = true;
+              this.score += 5;
               break;
             }
           }
           for(let i=this.middleLayer.length-1; i >= 0; i--){
             if(this.middleLayer[i].hits(mouseX,mouseY) && !chicken_killed){
               this.middleLayer[i].alive = false;
+              snd_chicken_hit_mid.play();
               chicken_killed = true;
+              this.score += 10;
               break;
             }
           }
           for(let i=this.backLayer.length-1; i >= 0; i--){
             if(this.backLayer[i].hits(mouseX,mouseY) && !chicken_killed){
               this.backLayer[i].alive = false;
+              snd_chicken_hit_far.play();
               chicken_killed = true;
+              this.score += 25;
               break;
             }
           }
