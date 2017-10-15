@@ -3,6 +3,9 @@ class titleScreen{
   }
 
   show(){
+    if(!snd_song.isPlaying()){
+      snd_song.play();
+    }
     background(51);
     let bbb = img_chicken_huge;
     image(bbb,0,height-bbb.height);

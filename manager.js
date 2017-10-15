@@ -15,6 +15,7 @@ class gameManager{
   }
 
   start(){
+    snd_song.stop();
     this.screenState="PLAYING";
     this.gameTime = 90;
     setInterval(this.updateTimer.bind(this),1000);
