@@ -138,6 +138,10 @@ class gameManager{
     }
   }
 
+  rightMouseAction(x,y){
+    this.gun.reload();
+  }
+
   keyboardAction(keycode){
     if(keycode == '32'){
       //Spacebar
