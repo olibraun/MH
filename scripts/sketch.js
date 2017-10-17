@@ -42,7 +42,7 @@ function setup() {
 
 function draw() {
   manager.update();
-  manager.show();
+  manager.show(mouseX,mouseY);
 }
 
 function mousePressed(){

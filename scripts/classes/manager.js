@@ -19,6 +19,7 @@ class gameManager{
   }
 
   start(){
+    noCursor();
     snd_song.stop();
     this.backLayer = [];
     this.middleLayer = [];
@@ -34,6 +35,7 @@ class gameManager{
     if(this.gameTime <= 0){
       this.screenState = "WIN";
       this.winScreen = new winScreen(this.score);
+      cursor();
     }
     if(this.screenState === "PLAYING"){
       //Generate new chickens
@@ -149,7 +151,7 @@ class gameManager{
     }
   }
 
-  show(){
+  show(x,y){
     switch(this.screenState){
       case "TITLE":
         this.title.show();
@@ -185,6 +187,8 @@ class gameManager{
 
         textAlign(LEFT,TOP);
         text(convertSeconds(this.gameTime),0,0);
+
+        crosshair(mouseX,mouseY);
         break;
 
       case "WIN":
