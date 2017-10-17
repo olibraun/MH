@@ -13,6 +13,9 @@ class gameManager{
     this.middleLayer = [];
     this.frontLayer = [];
     this.scoreDisplays = [];
+
+    //Call updateTimer every 1000 milliseconds
+    setInterval(this.updateTimer.bind(this),1000);
   }
 
   start(){
@@ -23,8 +26,8 @@ class gameManager{
     this.scoreDisplays = [];
     this.gun.reload();
     this.screenState="PLAYING";
+    this.score = 0;
     this.gameTime = 90;
-    setInterval(this.updateTimer.bind(this),1000);
   }
 
   update(){

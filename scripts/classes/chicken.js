@@ -1,6 +1,5 @@
 class Chicken{
   constructor(kind,direction){
-    this.pos = createVector(0,random(5*height/12));
     this.vel = createVector();
     this.alive = true;
     this.kind = kind;
@@ -26,6 +25,9 @@ class Chicken{
         break;
     }
 
+    //Create the chickens at a position such that the dont just suddenly appear on the screen
+    this.pos = createVector(-this.imageScale*img_chicken_alive.width,random(5*height/12));
+
     if(this.direction == "RIGHT_TO_LEFT"){
       this.velXScale *= -1;
       this.pos.x = width;
@@ -37,7 +39,7 @@ class Chicken{
   }
 
   offScreen(){
-    return this.pos.x > width || this.pos.x < 0 || this.pos.y > height;
+    return this.pos.x > width || this.pos.x < - this.imageScale*img_chicken_alive.width || this.pos.y > height;
   }
 
   update(){
