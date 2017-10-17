@@ -14,7 +14,7 @@ class gameManager{
     this.frontLayer = [];
     this.scoreDisplays = [];
 
-    //Call updateTimer every 1000 milliseconds
+    //Call updateTimer every 1000 milliseconds automatically
     setInterval(this.updateTimer.bind(this),1000);
   }
 
