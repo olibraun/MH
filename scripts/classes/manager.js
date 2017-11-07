@@ -185,19 +185,22 @@ class gameManager{
           snd_background.play();
         }
 
-        for(let i=this.backLayer.length-1; i >= 0; i--){
+        //Call the show-functions in a forward loop
+        //This way it is properly matched with the backwards shooting loop
+        //I.e. shooting kills the first bird to be seen...
+        for(let i=0; i < this.backLayer.length; i++){
           this.backLayer[i].show();
         }
-        for(let i=this.middleLayer.length-1; i >= 0; i--){
+        for(let i=0; i < this.middleLayer.length; i++){
           this.middleLayer[i].show();
         }
-        for(let i=this.frontLayer.length-1; i >= 0; i--){
+        for(let i=0; i < this.frontLayer.length; i++){
           this.frontLayer[i].show();
         }
-        for(let i=this.hugeLayer.length-1; i >= 0; i--){
+        for(let i=0; i < this.hugeLayer.length; i++){
           this.hugeLayer[i].show();
         }
-        for(let i=this.scoreDisplays.length-1; i >= 0; i--){
+        for(let i=0; i < this.scoreDisplays.length; i++){
           this.scoreDisplays[i].updateAndShow();
         }
 
