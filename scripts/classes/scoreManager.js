@@ -9,6 +9,6 @@ class ScoreManager{
       name: "Test Name",
       score: 99
     };
-    ref.push(data);
+    ref.push(score_data);
   }
 }
