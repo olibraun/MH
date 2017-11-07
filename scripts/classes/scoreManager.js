@@ -35,4 +35,25 @@ class ScoreManager{
       }
     });
   }
+
+  //Primitive order mechanism
+  orderHighscore(){
+    //Bubble-sort the Highscore-List
+    for(let i=0; i<this.scores_array.length; i++){
+      for(let j=i+1; j<this.scores_array.length; j++){
+        if(this.scores_array[i]>this.scores_array[j]){
+          swap(this.scores_array,i,j);
+          swap(this.names_array,i,j);
+        }
+      }
+    }
+    this.scores_array.reverse();
+    this.names_array.reverse();
+  }
+}
+
+function swap(L,i,j){
+  let temp = L[i];
+  L[i] = L[j];
+  L[j] = temp;
 }
