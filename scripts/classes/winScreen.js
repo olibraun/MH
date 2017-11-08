@@ -1,13 +1,11 @@
 class winScreen{
   constructor(points){
     this.points = points;
+    this.scoreManager = new ScoreManager();
   }
 
   show(){
     snd_background.stop();
-    if(!snd_song.isPlaying()){
-      snd_song.play();
-    }
     background(255);
     let bbb = img_chicken_thumbs_up;
     image(bbb,width-bbb.width,height-bbb.height);
