@@ -161,7 +161,9 @@ class gameManager{
   }
 
   rightMouseAction(x,y){
-    this.gun.reload();
+    if(this.screenState == "PLAYING"){
+      this.gun.reload();
+    }
   }
 
   keyboardAction(keycode){
