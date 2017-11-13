@@ -8,8 +8,8 @@ class winScreen{
     this.buttons = [];
     this.submitted = false;
 
-    this.buttons.push(new myButton(width/2-70,140,"restart"));
-    this.buttons.push(new myButton(width/2+70,140,"submit\nhighscore"));
+    this.buttons.push(new myButton(width/2-70,180,"restart"));
+    this.buttons.push(new myButton(width/2+70,180,"submit\nhighscore"));
 
     //Rufe aktuelle Highscore im Konstruktor aus der DB ab.
     Promise.all([this.scoreManager.queryHighscoreFromDB()]).then(res => this.scoreManager.orderHighscore());
@@ -44,10 +44,13 @@ class winScreen{
     let msg = "Herzlichen Glueckwunsch!\nDu hast " + str(this.points) + " Punkte!";
     text(msg,width/2,10);
 
+    msg = "Highscore-Liste"
+    text(msg,width/2,height/2)
+
     let hs_msg = "";
     for(let i=0; i<this.scoreManager.names_array.length; i++){
       hs_msg = hs_msg + this.scoreManager.names_array[i] + "   " + str(this.scoreManager.scores_array[i]) + "\n";
     }
-    text(hs_msg,width/2,height/2+100);
+    text(hs_msg,width/2,height/2+88);
   }
 }
