@@ -5,7 +5,7 @@ class gameManager{
     this.score = 0;
     this.gameTime = 999999;
 
-    this.title = new titleScreen();
+    this.title = new titleScreen(this);
     this.winScreen = null;
     this.gun = new Gun();
 
@@ -20,7 +20,6 @@ class gameManager{
   }
 
   start(){
-    noCursor();
     snd_song.stop();
     this.backLayer = [];
     this.middleLayer = [];
@@ -37,7 +36,6 @@ class gameManager{
     if(this.gameTime <= 0 && this.screenState != "WIN"){
       this.screenState = "WIN";
       this.winScreen = new winScreen(this.score);
-      cursor();
     }
     if(this.screenState === "PLAYING"){
       //Generate new chickens
@@ -104,7 +102,7 @@ class gameManager{
   mouseAction(x,y){
     switch(this.screenState){
       case "TITLE":
-        this.start();
+        this.title.mouseAction(x,y);
         break;
 
       case "PLAYING":
@@ -216,7 +214,6 @@ class gameManager{
         textAlign(LEFT,TOP);
         text(convertSeconds(this.gameTime),0,0);
 
-        crosshair(mouseX,mouseY);
         break;
 
       case "WIN":

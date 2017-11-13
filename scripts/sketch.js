@@ -38,6 +38,8 @@ function setup() {
   createCanvas(1200,700);
   manager = new gameManager();
   //console.log(firebase);
+  textSize(35);
+  textFont(silly_font);
 }
 
 function draw() {
