@@ -30,7 +30,7 @@ class gameManager{
     this.gun.reload();
     this.screenState="PLAYING";
     this.score = 0;
-    this.gameTime = 2;//90;
+    this.gameTime = 90;
   }
 
   update(){
