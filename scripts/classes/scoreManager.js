@@ -6,17 +6,20 @@ class ScoreManager{
   }
 
   queryNameFromUser(){
-    let user_name = window.prompt("Highscore-Liste: Bitte gib deinen Namen ein.","");
+    let user_name = window.prompt("Highscore-Liste: Bitte gib deinen Namen ein.\nKein Eintrag bei Abbruch oder ohne Namen.","");
     return user_name;
   }
 
   submitScore(name,score){
     let ref = this.DB.ref('scores/MH');
-    let score_data = {
-      name: name,
-      score: score
-    };
-    ref.push(score_data);
+    console.log(name);
+    if(name[0] != null && name[0] != ""){
+      let score_data = {
+        name: name,
+        score: score
+      };
+      ref.push(score_data);
+    }
   }
 
   scoreSubmission(score){

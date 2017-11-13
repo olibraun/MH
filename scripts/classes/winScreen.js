@@ -9,7 +9,7 @@ class winScreen{
     this.submitted = false;
 
     this.buttons.push(new myButton(width/2-70,180,"restart"));
-    this.buttons.push(new myButton(width/2+70,180,"submit\nhighscore"));
+    this.buttons.push(new myButtonWithState(width/2+70,180,"submit\nhighscore"));
 
     //Rufe aktuelle Highscore im Konstruktor aus der DB ab.
     Promise.all([this.scoreManager.queryHighscoreFromDB()]).then(res => this.scoreManager.orderHighscore());
@@ -26,6 +26,7 @@ class winScreen{
       this.scoreManager.scoreSubmission(this.points);
       this.scoreManager.queryHighscoreFromDB();
       this.submitted = true;
+      this.buttons[1].deactivate();
     }
   }
 
@@ -49,7 +50,7 @@ class winScreen{
 
     let hs_msg = "";
     for(let i=0; i<this.scoreManager.names_array.length; i++){
-      hs_msg = hs_msg + this.scoreManager.names_array[i] + "   " + str(this.scoreManager.scores_array[i]) + "\n";
+      hs_msg = hs_msg + this.scoreManager.names_array[i] + ":   " + str(this.scoreManager.scores_array[i]) + " Punkte\n";
     }
     text(hs_msg,width/2,height/2+88);
   }

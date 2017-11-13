@@ -4,6 +4,7 @@ class myButton{
     this.h = 50;
     this.pos = createVector(x,y);
     this.msg = msg;
+    this.col = color(0,0,0);
   }
 
   hits(x,y){
@@ -14,12 +15,12 @@ class myButton{
 
   show(){
     push();
-    stroke(0, 0, 0);
+    stroke(this.col);
     strokeWeight(3);
     noFill();
     rectMode(CENTER);
     rect(this.pos.x,this.pos.y,this.w,this.h);
-    fill(0);
+    fill(this.col);
     noStroke();
     textAlign(CENTER,CENTER);
     textSize(20);
