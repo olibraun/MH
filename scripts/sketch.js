@@ -37,6 +37,7 @@ function preload(){
 function setup() {
   createCanvas(1200,700);
   manager = new gameManager();
+  //console.log(firebase);
 }
 
 function draw() {

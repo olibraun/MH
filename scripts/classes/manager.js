@@ -30,11 +30,11 @@ class gameManager{
     this.gun.reload();
     this.screenState="PLAYING";
     this.score = 0;
-    this.gameTime = 90;
+    this.gameTime = 2;//90;
   }
 
   update(){
-    if(this.gameTime <= 0){
+    if(this.gameTime <= 0 && this.screenState != "WIN"){
       this.screenState = "WIN";
       this.winScreen = new winScreen(this.score);
       cursor();
@@ -157,7 +157,7 @@ class gameManager{
         break;
 
       case "WIN":
-        this.start();
+        this.winScreen.mouseAction(x,y,this);
         break;
     }
   }

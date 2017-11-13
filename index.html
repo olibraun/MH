@@ -4,6 +4,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/addons/p5.dom.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/addons/p5.sound.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCzr-vEMgWBBzxn9dKWKG1H6pvMoO3ftI4",
+        authDomain: "oli-js-games.firebaseapp.com",
+        databaseURL: "https://oli-js-games.firebaseio.com",
+        projectId: "oli-js-games",
+        storageBucket: "oli-js-games.appspot.com",
+        messagingSenderId: "901859120863"
+      };
+      firebase.initializeApp(config);
+    </script>
     <script src="scripts/sketch.js"></script>
     <script src="scripts/misc/loaders.js"></script>
     <script src="scripts/classes/manager.js"></script>
@@ -13,7 +26,10 @@
     <script src="scripts/classes/scoreDisplay.js"></script>
     <script src="scripts/classes/gun.js"></script>
     <script src="scripts/classes/hugechicken.js"></script>
+    <script src="scripts/classes/scoreManager.js"></script>
     <script src="scripts/misc/misc.js"></script>
+    <script src="scripts/misc/button.js"></script>
+    <script src="scripts/misc/buttonWithState.js"></script>
   <style> body {padding: 0; margin: 0;} </style>
   </head>
   <body>
