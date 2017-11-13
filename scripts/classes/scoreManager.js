@@ -6,7 +6,7 @@ class ScoreManager{
   }
 
   queryNameFromUser(){
-    let user_name = window.prompt("Gib bitte deinen Namen für die Highscore-Liste ein.","");
+    let user_name = window.prompt("Highscore-Liste: Bitte gib deinen Namen ein.","");
     return user_name;
   }
 
@@ -25,9 +25,7 @@ class ScoreManager{
   }
 
   queryHighscoreFromDB(){
-    console.log("DBQuery begin");
     let ref = this.DB.ref('scores/MH');
-    console.log(ref);
     let self = this;
     let ff = ref.once('value').then(function(data){
       let scores = data.val();
@@ -42,18 +40,15 @@ class ScoreManager{
           self.scores_array.push(scores[k].score);
         }
       }
-    }).then(() => this.orderHighscore()).then(() => console.log("DBQuery done. Score-Array:")).then(() => console.log(this.scores_array));
+    }).then(() => this.orderHighscore());
   }
 
   //Primitive order mechanism
   orderHighscore(){
-    console.log("begin order with");
-    console.log(this.scores_array);
     //Bubble-sort the Highscore-List
     for(let i=0; i<this.scores_array.length; i++){
       for(let j=i+1; j<this.scores_array.length; j++){
         if(this.scores_array[i]>this.scores_array[j]){
-          console.log("perform swap");
           swap(this.scores_array,i,j);
           swap(this.names_array,i,j);
         }
@@ -61,7 +56,6 @@ class ScoreManager{
     }
     this.scores_array.reverse();
     this.names_array.reverse();
-    console.log("end order");
   }
 }
 
