@@ -1,6 +1,6 @@
 class myButton{
   constructor(x,y,msg){
-    this.w = 100;
+    this.w = 120;
     this.h = 50;
     this.pos = createVector(x,y);
     this.msg = msg;
@@ -13,16 +13,18 @@ class myButton{
   }
 
   show(){
-    stroke(179, 179, 204);
+    push();
+    stroke(0, 0, 0);
     strokeWeight(3);
     noFill();
     rectMode(CENTER);
     rect(this.pos.x,this.pos.y,this.w,this.h);
-    fill(255);
+    fill(0);
     noStroke();
     textAlign(CENTER,CENTER);
     textSize(20);
     textStyle(NORMAL);
-    text(msg,this.pos.x,this.pos.y);
+    text(this.msg,this.pos.x,this.pos.y);
+    pop();
   }
 }

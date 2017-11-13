@@ -157,7 +157,7 @@ class gameManager{
         break;
 
       case "WIN":
-        this.start();
+        this.winScreen.mouseAction(x,y,this);
         break;
     }
   }

@@ -19,6 +19,11 @@ class ScoreManager{
     ref.push(score_data);
   }
 
+  scoreSubmission(score){
+    let self = this;
+    Promise.all([self.queryNameFromUser()]).then(name => self.submitScore(name,score));
+  }
+
   queryHighscoreFromDB(){
     console.log("DBQuery begin");
     let ref = this.DB.ref('scores/MH');
@@ -35,9 +40,9 @@ class ScoreManager{
           let k = keys[i];
           self.names_array.push(scores[k].name);
           self.scores_array.push(scores[k].score);
-        }        
+        }
       }
-    }).then(() => console.log("DBQuery done. Score-Array:")).then(() => console.log(this.scores_array));
+    }).then(() => this.orderHighscore()).then(() => console.log("DBQuery done. Score-Array:")).then(() => console.log(this.scores_array));
   }
 
   //Primitive order mechanism

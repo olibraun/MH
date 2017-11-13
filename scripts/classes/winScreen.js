@@ -1,15 +1,38 @@
 class winScreen{
   constructor(points){
-    console.log("winScreen constructor");
+    //Dies wird eine Referenz auf den Game Manager, die durch die MouseAction befüllt wird.
+    this.parentManager = null;
+
     this.points = points;
     this.scoreManager = new ScoreManager();
+    this.buttons = [];
+    this.submitted = false;
 
+    this.buttons.push(new myButton(width/2-70,140,"restart"));
+    this.buttons.push(new myButton(width/2+70,140,"submit\nhighscore"));
+
+    //Rufe aktuelle Highscore im Konstruktor aus der DB ab.
     Promise.all([this.scoreManager.queryHighscoreFromDB()]).then(res => this.scoreManager.orderHighscore());
+  }
+
+  mouseAction(x,y,ref){
+    this.parentManager = ref;
+    if(this.buttons[0].hits(x,y)){
+      //Restart-Button
+      this.parentManager.start();
+    }
+    if(this.buttons[1].hits(x,y) && !this.submitted){
+      //Restart-Button
+      this.scoreManager.scoreSubmission(this.points);
+      this.scoreManager.queryHighscoreFromDB();
+      this.submitted = true;
+    }
   }
 
   show(){
     snd_background.stop();
     background(255);
+    this.buttons.forEach(button => button.show());
     let bbb = img_chicken_thumbs_up;
     image(bbb,width-bbb.width,height-bbb.height);
     fill(0);
