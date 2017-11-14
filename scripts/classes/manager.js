@@ -7,6 +7,8 @@ class gameManager{
 
     this.title = new titleScreen(this);
     this.winScreen = null;
+    this.highScoreScreen = new HighScoreScreen(this);
+
     this.gun = new Gun();
 
     this.backLayer = [];
@@ -157,6 +159,10 @@ class gameManager{
       case "WIN":
         this.winScreen.mouseAction(x,y,this);
         break;
+
+      case "HIGHSCORE":
+        this.highScoreScreen.mouseAction(x,y);
+        break;
     }
   }
 
@@ -220,6 +226,10 @@ class gameManager{
 
       case "WIN":
         this.winScreen.show();
+        break;
+
+      case "HIGHSCORE":
+        this.highScoreScreen.show();
         break;
     }
   }

@@ -1,12 +1,16 @@
 class titleScreen{
   constructor(ref){
     this.parentManager = ref;
-    this.startButton = new myButtonWithColor(width/2,height/2,"start",color(255,255,255));
+    this.startButton = new myButtonWithColor(width/2,height/2-30,"start",color(255,255,255));
+    this.highScoreButton = new myButtonWithColor(width/2,height/2+30,"highscore",color(255,255,255));
   }
 
   mouseAction(x,y){
     if(this.startButton.hits(x,y)){
       this.parentManager.start();
+    }
+    if(this.highScoreButton.hits(x,y)){
+      this.parentManager.screenState = "HIGHSCORE";
     }
   }
 
@@ -16,6 +20,7 @@ class titleScreen{
     }
     background(51);
     this.startButton.show();
+    this.highScoreButton.show();
     let bbb = img_chicken_huge;
     //image(bbb,0,height-bbb.height);
     image(bbb,width-bbb.width,height-bbb.height);
