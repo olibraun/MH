@@ -1,8 +1,8 @@
 class titleScreen{
   constructor(ref){
     this.parentManager = ref;
-    this.startButton = new myButtonWithColor(width/2,height/2-30,"start",color(255,255,255));
-    this.highScoreButton = new myButtonWithColor(width/2,height/2+30,"highscore",color(255,255,255));
+    this.startButton = new myButtonWithColor(width/2,height/2-30,"start",color(0,0,0));
+    this.highScoreButton = new myButtonWithColor(width/2,height/2+30,"highscore",color(0,0,0));
   }
 
   mouseAction(x,y){
@@ -18,14 +18,14 @@ class titleScreen{
     if(!snd_song.isPlaying()){
       snd_song.play();
     }
-    background(51);
+    background(251);
     this.startButton.show();
     this.highScoreButton.show();
     let bbb = img_chicken_huge;
     //image(bbb,0,height-bbb.height);
     image(bbb,width-bbb.width,height-bbb.height);
     push();
-    fill(0, 255, 0);
+    fill(51);
     noStroke();
     textAlign(LEFT,TOP);
     textSize(50);
