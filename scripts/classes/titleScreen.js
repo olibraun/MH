@@ -1,12 +1,16 @@
 class titleScreen{
   constructor(ref){
     this.parentManager = ref;
-    this.startButton = new myButtonWithColor(width/2,height/2,"start",color(255,255,255));
+    this.startButton = new myButtonWithColor(width/2,height/2-30,"start",color(0,0,0));
+    this.highScoreButton = new myButtonWithColor(width/2,height/2+30,"highscore",color(0,0,0));
   }
 
   mouseAction(x,y){
     if(this.startButton.hits(x,y)){
       this.parentManager.start();
+    }
+    if(this.highScoreButton.hits(x,y)){
+      this.parentManager.screenState = "HIGHSCORE";
     }
   }
 
@@ -14,13 +18,14 @@ class titleScreen{
     if(!snd_song.isPlaying()){
       snd_song.play();
     }
-    background(51);
+    background(251);
     this.startButton.show();
+    this.highScoreButton.show();
     let bbb = img_chicken_huge;
     //image(bbb,0,height-bbb.height);
     image(bbb,width-bbb.width,height-bbb.height);
     push();
-    fill(0, 255, 0);
+    fill(51);
     noStroke();
     textAlign(LEFT,TOP);
     textSize(50);
@@ -30,7 +35,7 @@ class titleScreen{
     msg = "Moorhuhn-Klon";
     text(msg,25,25);
     textSize(20);
-    msg = "v1.0";
+    msg = "v1.1";
     text(msg,25,height-30);
     pop();
   }
