@@ -97,49 +97,46 @@ class gameManager{
           //Make sure we only kill one chicken per click
           let chicken_killed = false;
           //Kill the front chickens first -- after the huge chicken
-          for(let i=this.hugeLayer.length-1; i >= 0; i--){
-            if(this.hugeLayer[i].hits(mouseX,mouseY) && !chicken_killed && this.hugeLayer[i].alive){
-              this.hugeLayer[i].alive = false;
-              snd_big_chicken_shot.play();
-              chicken_killed = true;
-              this.scoreDisplays.push(new scoreDisplay("30",x,y) );
-              this.score += 30;
-              break;
-            }
-          }
-          for(let i=this.frontLayer.length-1; i >= 0; i--){
-            if(this.frontLayer[i].hits(mouseX,mouseY) && !chicken_killed && this.frontLayer[i].alive){
-              this.frontLayer[i].alive = false;
-              snd_chicken_hit_close.play();
-              chicken_killed = true;
-              this.scoreDisplays.push(new scoreDisplay("5",x,y) );
-              this.score += 5;
-              break;
-            }
-          }
-          for(let i=this.middleLayer.length-1; i >= 0; i--){
-            if(this.middleLayer[i].hits(mouseX,mouseY) && !chicken_killed && this.middleLayer[i].alive){
-              this.middleLayer[i].alive = false;
-              snd_chicken_hit_mid.play();
-              chicken_killed = true;
-              this.scoreDisplays.push(new scoreDisplay("10",x,y) );
-              this.score += 10;
-              break;
-            }
-          }
-          for(let i=this.backLayer.length-1; i >= 0; i--){
-            if(this.backLayer[i].hits(mouseX,mouseY) && !chicken_killed && this.backLayer[i].alive){
-              this.backLayer[i].alive = false;
-              snd_chicken_hit_far.play();
-              chicken_killed = true;
-              this.scoreDisplays.push(new scoreDisplay("25",x,y) );
-              this.score += 25;
-              break;
+          //Use a for-of-Loop which is guaranteed to go through the array in order (ES6 specification)
+          const layerArray = [this.hugeLayer,this.frontLayer,this.middleLayer,this.backLayer];
+          for(let layer of layerArray){
+            for(let i=layer.length-1; i >= 0; i--){
+              if(layer[i].hits(mouseX,mouseY) && !chicken_killed && layer[i].alive){
+                layer[i].alive = false;
+                chicken_killed = true;
+                switch(layer){
+                  case this.hugeLayer:
+                  snd_big_chicken_shot.play();
+                  this.scoreDisplays.push(new scoreDisplay("30",x,y) );
+                  this.score += 30;
+                  break;
+
+                  case this.frontLayer:
+                  snd_chicken_hit_close.play();
+                  this.scoreDisplays.push(new scoreDisplay("5",x,y) );
+                  this.score += 5;
+                  break;
+
+                  case this.middleLayer:
+                  snd_chicken_hit_mid.play();
+                  this.scoreDisplays.push(new scoreDisplay("10",x,y) );
+                  this.score += 10;
+                  break;
+
+                  case this.backLayer:
+                  snd_chicken_hit_far.play();
+                  this.scoreDisplays.push(new scoreDisplay("25",x,y) );
+                  this.score += 25;
+                  break;
+                }
+                
+                break;
+              }
             }
           }
         }
         break;
-
+          
       case "WIN":
         this.winScreen.mouseAction(x,y,this);
         break;
@@ -178,21 +175,11 @@ class gameManager{
         //Call the show-functions in a forward loop
         //This way it is properly matched with the backwards shooting loop
         //I.e. shooting kills the first bird to be seen...
-        for(let i=0; i < this.backLayer.length; i++){
-          this.backLayer[i].show();
-        }
-        for(let i=0; i < this.middleLayer.length; i++){
-          this.middleLayer[i].show();
-        }
-        for(let i=0; i < this.frontLayer.length; i++){
-          this.frontLayer[i].show();
-        }
-        for(let i=0; i < this.hugeLayer.length; i++){
-          this.hugeLayer[i].show();
-        }
-        for(let i=0; i < this.scoreDisplays.length; i++){
-          this.scoreDisplays[i].updateAndShow();
-        }
+        [this.backLayer,this.middleLayer,this.frontLayer,this.hugeLayer,this.scoreDisplays].forEach(layer => {
+          for(let i=0; i < layer.length; i++){
+            layer[i].show();
+          }
+        });
 
         this.gun.show();
 

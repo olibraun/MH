@@ -8,7 +8,8 @@ class scoreDisplay{
     this.alphaSubtract = this.alpha / this.timer;
   }
 
-  updateAndShow(){
+  show(){
+    //This classes show-Method also contains updates for convenience
     this.timer--;
     this.y--;
     this.alpha-=this.alphaSubtract;
