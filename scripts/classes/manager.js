@@ -96,7 +96,7 @@ class gameManager{
         if(gun_result){
           //Make sure we only kill one chicken per click
           let chicken_killed = false;
-          //Kill the front chickens first -- after the huge ghicken
+          //Kill the front chickens first -- after the huge chicken
           for(let i=this.hugeLayer.length-1; i >= 0; i--){
             if(this.hugeLayer[i].hits(mouseX,mouseY) && !chicken_killed && this.hugeLayer[i].alive){
               this.hugeLayer[i].alive = false;
