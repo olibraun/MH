@@ -25,7 +25,7 @@ class Chicken{
         break;
     }
 
-    //Create the chickens at a position such that the dont just suddenly appear on the screen
+    //Create the chickens at a position such that they don't just suddenly appear on the screen
     this.pos = createVector(-this.imageScale*img_chicken_alive.width,random(5*height/12));
 
     if(this.direction == "RIGHT_TO_LEFT"){
@@ -44,22 +44,8 @@ class Chicken{
 
   update(){
     this.pos.add(this.vel);
-    switch(this.kind){
-      case "FRONT":
-        this.vel.x = this.alive ? this.velXScale : 0;
-        this.vel.y = this.alive ? sin(this.velYScale*this.pos.x) : 5;
-        break;
-
-      case "MIDDLE":
-        this.vel.x = this.alive ? this.velXScale : 0;
-        this.vel.y = this.alive ? sin(this.velYScale*this.pos.x) : 5;
-        break;
-
-      case "BACK":
-        this.vel.x = this.alive ? this.velXScale : 0;
-        this.vel.y = this.alive ? sin(this.velYScale*this.pos.x) : 5;
-        break;
-    }
+    this.vel.x = this.alive ? this.velXScale : 0;
+    this.vel.y = this.alive ? sin(this.velYScale*this.pos.x) : 5;
   }
 
   show(){
