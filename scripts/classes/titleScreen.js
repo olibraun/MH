@@ -22,7 +22,6 @@ class titleScreen{
     this.startButton.show();
     this.highScoreButton.show();
     let bbb = img_chicken_huge;
-    //image(bbb,0,height-bbb.height);
     image(bbb,width-bbb.width,height-bbb.height);
     push();
     fill(51);
