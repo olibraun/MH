@@ -64,30 +64,14 @@ class gameManager{
       }
 
       //Update and, if necessary, remove chickens
-      for(let i=this.backLayer.length-1; i >= 0; i--){
-        this.backLayer[i].update();
-        if(this.backLayer[i].offScreen()){
-          this.backLayer.splice(i,1);
+      [this.backLayer,this.middleLayer,this.frontLayer,this.hugeLayer].forEach(layer => {
+        for(let i=layer.length-1; i >= 0; i--){
+          layer[i].update();
+          if(layer[i].offScreen()){
+            layer.splice(i,1);
+          }
         }
-      }
-      for(let i=this.middleLayer.length-1; i >= 0; i--){
-        this.middleLayer[i].update();
-        if(this.middleLayer[i].offScreen()){
-          this.middleLayer.splice(i,1);
-        }
-      }
-      for(let i=this.frontLayer.length-1; i >= 0; i--){
-        this.frontLayer[i].update();
-        if(this.frontLayer[i].offScreen()){
-          this.frontLayer.splice(i,1);
-        }
-      }
-      for(let i=this.hugeLayer.length-1; i >= 0; i--){
-        this.hugeLayer[i].update();
-        if(this.hugeLayer[i].offScreen()){
-          this.hugeLayer.splice(i,1);
-        }
-      }
+      });
       //If appropriate, remove score displays
       for(let i=this.scoreDisplays.length-1; i >= 0; i--){
         if(this.scoreDisplays[i].timer < 0){
