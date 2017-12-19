@@ -2,19 +2,13 @@ class Gun{
   constructor(){
     this.ammo = 9;
     this.shells = [];
-    this.shells.push( [img_bullet,0,550,105,122.5] );
-    this.shells.push( [img_bullet,30,550,105,122.5] );
-    this.shells.push( [img_bullet,60,550,105,122.5] );
-    this.shells.push( [img_bullet,90,550,105,122.5] );
-    this.shells.push( [img_bullet,120,550,105,122.5] );
-    this.shells.push( [img_bullet,150,550,105,122.5] );
-    this.shells.push( [img_bullet,180,550,105,122.5] );
-    this.shells.push( [img_bullet,210,550,105,122.5] );
-    this.shells.push( [img_bullet,240,550,105,122.5] );
+    [0,30,60,90,120,150,180,210,240].forEach(pos => {
+      this.shells.push( [img_bullet,pos,550,105,122.5] );
+    });
   }
 
   fire(){
-    //This function "fires the gun", if there is enough ammo
+    //This function "fires the gun", if there is enough ammo.
     //That is, it plays the appropriate sound
     //It then reduces the number of ammo, shells displayed and returns an info
     //about whether or not it was able to fire.
