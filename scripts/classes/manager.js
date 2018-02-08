@@ -59,7 +59,7 @@ class gameManager{
         }
       }
       //Generate huge chickens
-      if(random(1)<0.001 && this.hugeLayer.length == 0){
+      if(random(1)<0.0015 && this.hugeLayer.length == 0){
         this.hugeLayer.push(new huge_chicken());
       }
 
