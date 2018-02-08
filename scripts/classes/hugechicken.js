@@ -3,7 +3,7 @@ class huge_chicken{
     this.img = img_chicken_huge;
     this.pos = createVector(random(0,width-this.img.width),height-this.img.height);
     this.alive = true;
-    this.alive_time = 60;
+    this.alive_time = 70;
 
     snd_big_chicken_appears.play();
   }
@@ -12,6 +12,8 @@ class huge_chicken{
     // Decrease alive_time as long as the chicken is alive
     if(this.alive) {
       this.alive_time--;
+    } else {
+      this.alive_time = -1;
     }
 
     if(this.alive_time < 0) {
