@@ -41,7 +41,7 @@ class gameManager{
     }
     if(this.screenState === "PLAYING"){
       //Generate new chickens
-      if(random(1) < 0.01){
+      if(random(1) < 0.02){
         let temp_kind = random(["FRONT","MIDDLE","BACK"]);
         let temp_chicken = new Chicken( temp_kind , random(["RIGHT_TO_LEFT","LEFT_TO_RIGHT"]) );
         switch(temp_kind){
@@ -59,7 +59,7 @@ class gameManager{
         }
       }
       //Generate huge chickens
-      if(random(1)<0.0015 && this.hugeLayer.length == 0){
+      if(random(1)<0.002 && this.hugeLayer.length == 0){
         this.hugeLayer.push(new huge_chicken());
       }
 
