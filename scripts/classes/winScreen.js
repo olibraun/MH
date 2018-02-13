@@ -1,6 +1,6 @@
 class winScreen{
   constructor(points){
-    //Dies wird eine Referenz auf den Game Manager, die durch die MouseAction befüllt wird.
+    // Dies wird eine Referenz auf den Game Manager, die durch die MouseAction befüllt wird.
     this.parentManager = null;
 
     this.points = points;
@@ -11,18 +11,18 @@ class winScreen{
     this.buttons.push(new myButton(width/2-70,180,"restart"));
     this.buttons.push(new myButtonWithState(width/2+70,180,"submit\nhighscore"));
 
-    //Rufe aktuelle Highscore im Konstruktor aus der DB ab.
+    // Rufe aktuelle Highscore im Konstruktor aus der DB ab.
     Promise.all([this.scoreManager.queryHighscoreFromDB()]).then(res => this.scoreManager.orderHighscore());
   }
 
   mouseAction(x,y,ref){
     this.parentManager = ref;
-    if(this.buttons[0].hits(x,y)){
-      //Restart-Button
+    // Find out which button (if any) was clicked
+    if (this.buttons[0].hits(x,y)) {
+      // Restart-Button
       this.parentManager.start();
-    }
-    if(this.buttons[1].hits(x,y) && !this.submitted){
-      //Restart-Button
+    } else if (this.buttons[1].hits(x,y) && !this.submitted) {
+      // Restart-Button
       this.scoreManager.scoreSubmission(this.points);
       this.scoreManager.queryHighscoreFromDB();
       this.submitted = true;
