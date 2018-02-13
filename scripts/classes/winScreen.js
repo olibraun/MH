@@ -26,13 +26,15 @@ class winScreen{
       // HS-Screen-Button
       let proceed = true;
       if(!this.submitted) {
-        proceed = window.confirm("Wirklich fortfahren? Ihr Fortschritt wurde noch nicht in die Datenbank gespeichert und würde verloren gehen.");
+        proceed = window.confirm("Wirklich fortfahren? Ihr Fortschritt wurde noch nicht in die Datenbank gespeichert und geht verloren.");
       }
       if(proceed) {
-        // proceed to high score screen, otherwise do nothing.
+        // This "hack" in the game time is needed because of the silly update method in the game manager class.
+        this.parentManager.gameTime = 999999;
+        this.parentManager.screenState = "HIGHSCORE";
       }
     } else if (this.buttons[2].hits(x,y) && !this.submitted) {
-      // Restart-Button
+      // Submit-Button
       this.scoreManager.scoreSubmission(this.points);
       this.scoreManager.queryHighscoreFromDB();
       this.submitted = true;
