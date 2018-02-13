@@ -8,8 +8,9 @@ class winScreen{
     this.buttons = [];
     this.submitted = false;
 
-    this.buttons.push(new myButton(width/2-70,180,"restart"));
-    this.buttons.push(new myButtonWithState(width/2+70,180,"submit\nhighscore"));
+    this.buttons.push(new myButton(width/2-70-60,180,"restart"));
+    this.buttons.push(new myButton(width/2,180,"highscore\nscreen"));
+    this.buttons.push(new myButtonWithState(width/2+70+60,180,"submit\nhighscore"));
 
     // Rufe aktuelle Highscore im Konstruktor aus der DB ab.
     Promise.all([this.scoreManager.queryHighscoreFromDB()]).then(res => this.scoreManager.orderHighscore());
@@ -21,7 +22,10 @@ class winScreen{
     if (this.buttons[0].hits(x,y)) {
       // Restart-Button
       this.parentManager.start();
-    } else if (this.buttons[1].hits(x,y) && !this.submitted) {
+    } else if (this.buttons[1].hits(x,y)) {
+      // HS-Screen-Button
+      
+    } else if (this.buttons[2].hits(x,y) && !this.submitted) {
       // Restart-Button
       this.scoreManager.scoreSubmission(this.points);
       this.scoreManager.queryHighscoreFromDB();
