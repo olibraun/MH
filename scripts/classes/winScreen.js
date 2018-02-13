@@ -24,7 +24,13 @@ class winScreen{
       this.parentManager.start();
     } else if (this.buttons[1].hits(x,y)) {
       // HS-Screen-Button
-      
+      let proceed = true;
+      if(!this.submitted) {
+        proceed = window.confirm("Wirklich fortfahren? Ihr Fortschritt wurde noch nicht in die Datenbank gespeichert und würde verloren gehen.");
+      }
+      if(proceed) {
+        // proceed to high score screen, otherwise do nothing.
+      }
     } else if (this.buttons[2].hits(x,y) && !this.submitted) {
       // Restart-Button
       this.scoreManager.scoreSubmission(this.points);
