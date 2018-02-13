@@ -34,7 +34,7 @@ class titleScreen{
     msg = "Moorhuhn-Klon";
     text(msg,25,25);
     textSize(20);
-    msg = "v1.1";
+    msg = "v1.2";
     text(msg,25,height-30);
     pop();
   }
